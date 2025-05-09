@@ -1,7 +1,7 @@
 
 import Elysia from "elysia";
 
-export const list = new Elysia({ name: "ListReport" })
+export const update = new Elysia({ name: "UpdateReport" })
     .put("/:id", ({body, params: {id}}) => {
         return {
             message: `Report with id ${id} updated successfully`,
