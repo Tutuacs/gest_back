@@ -1,9 +1,4 @@
-export enum FIELD_TYPES {
-    STRING = "string",
-    NUMBER = "number",
-    BOOLEAN = "boolean",
-    DATE = "date",
-}
+import { FIELD_TYPES } from "../enums/fieldTypes";
 
 export function fieldTypeValidOptions({f, max, min, v}: {f: FIELD_TYPES, max: string, min: string, v: string}): boolean {
     if (!max && !min) {
