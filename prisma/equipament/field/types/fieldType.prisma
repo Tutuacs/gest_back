@@ -1,0 +1,16 @@
+
+model FieldType {
+  id               BigInt          @id @default(autoincrement())
+  name             String
+  type             FIELD_TYPES
+  optional         Boolean         @default(false)
+  max              String?
+  min              String?
+  createdAt        DateTime        @default(now())
+  updatedAt        DateTime        @updatedAt
+  updatedBy        User?           @relation(fields: [updatedById], references: [id])
+  updatedById      Int?
+  EquipamentType   EquipamentType? @relation(fields: [equipamentTypeId], references: [id])
+  equipamentTypeId BigInt?
+  Field            Field[]
+}

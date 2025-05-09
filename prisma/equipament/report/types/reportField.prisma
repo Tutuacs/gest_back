@@ -1,0 +1,8 @@
+model ReportField {
+  id                BigInt           @id @default(autoincrement())
+  reportFieldType   ReportFieldType? @relation(fields: [reportFieldTypeId], references: [id])
+  reportFieldTypeId BigInt?
+  value             String
+  report            Report           @relation(fields: [reportId], references: [id])
+  reportId          BigInt
+}

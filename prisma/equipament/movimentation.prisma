@@ -1,0 +1,10 @@
+model Movimentation {
+  id          BigInt   @id @default(autoincrement())
+  description String
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  updatedBy   User?    @relation(fields: [updatedById], references: [id])
+  updatedById Int?
+  Updater     Updater? @relation(fields: [updaterId], references: [id])
+  updaterId   Int?
+}

@@ -1,0 +1,9 @@
+
+model Field {
+  id           BigInt      @id @default(autoincrement())
+  value        String
+  fieldType    FieldType?  @relation(fields: [fieldTypeId], references: [id])
+  fieldTypeId  BigInt?
+  equipament   Equipament? @relation(fields: [equipamentId], references: [id])
+  equipamentId BigInt?
+}

@@ -1,0 +1,13 @@
+model EquipamentType {
+  id          BigInt        @id @default(autoincrement())
+  name        String
+  description String?
+  fieldType   FieldType[]
+  licenseType LicenseType[]
+  reportType  ReportType[]
+  createdAt   DateTime      @default(now())
+  updatedAt   DateTime      @updatedAt
+  updatedBy   User?         @relation(fields: [updatedById], references: [id])
+  updatedById Int?
+  Equipament  Equipament[]
+}
