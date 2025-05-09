@@ -1,10 +1,10 @@
 import { t } from "elysia";
 import { reportType } from "../reportType/types";
-import { id, createdAt, updatedAt, updatedBy } from "../common";
+import { id, createdAt, updatedAt, updatedBy, FIELD_TYPES } from "../common";
 
 const reportTypeId = reportType.properties.id;
 const name = t.String();
-const type = t.String();
+const type = t.Enum(FIELD_TYPES);
 const optional = t.Boolean();
 
 export const reportFieldType = t.Object({

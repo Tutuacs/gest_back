@@ -1,8 +1,8 @@
 import { t } from "elysia";
-import { createdAt, id, updatedAt, updatedBy } from "../common";
+import { createdAt, FIELD_TYPES, id, updatedAt, updatedBy } from "../common";
 
 const name = t.String()
-const type = t.String()
+const type = t.Enum(FIELD_TYPES)
 const optional = t.Boolean()
 
 export const fieldType = t.Object({
