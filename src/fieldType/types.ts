@@ -1,5 +1,6 @@
 import { t } from "elysia";
-import { createdAt, FIELD_TYPES, id, updatedAt, updatedBy } from "../common";
+import { createdAt, id, updatedAt, updatedBy } from "../common";
+import { FIELD_TYPES } from "../enums/fieldTypes";
 
 const name = t.String()
 const type = t.Enum(FIELD_TYPES)
