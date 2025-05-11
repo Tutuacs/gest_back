@@ -35,7 +35,7 @@ describe("EquipamentTypeRepository Repository", () => {
     })
 
     it("should list equipamentTypes", async () => {
-        const equipamentTypes = await eqType.list({ skip: 0, take: 10 })
+        const equipamentTypes = await eqType.list({})
         expect(equipamentTypes).not.toBe(null)
         expect(equipamentTypes.length).toBeGreaterThan(0)
     })
