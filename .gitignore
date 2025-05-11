@@ -2,6 +2,7 @@
 
 # dependencies
 .env
+/prisma/schema/migrations
 /src/prisma
 /node_modules
 /.pnp
