@@ -17,6 +17,7 @@ model User {
   ReportType      ReportType[]
   Updater         Updater?
   Movimentation   Movimentation[]
+
 }
 
 model Updater {
