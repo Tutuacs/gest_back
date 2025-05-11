@@ -44,7 +44,7 @@ export class equipamentTypeRepository {
         });
     }
 
-    async list({skip, take}: {skip: number | undefined, take: number | undefined}) {
+    async list({skip, take}: {skip?: number , take?: number }) {
         return await this.prisma.equipamentType.findMany({
             skip,
             take,
