@@ -1,7 +1,7 @@
 import { t } from "elysia";
 import { reportType } from "../reportType/types";
 import { id, createdAt, updatedAt, updatedBy } from "../common";
-import { FIELD_TYPES } from "../enums/fieldTypes";
+import { FIELD_TYPES } from "../prisma";
 
 const reportTypeId = reportType.properties.id;
 const name = t.String();

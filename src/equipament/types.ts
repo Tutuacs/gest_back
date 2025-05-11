@@ -1,7 +1,7 @@
 import { t } from "elysia";
 import { equipamentType } from "../equipamentType/types";
 import { id, createdAt, updatedAt, updatedBy } from "../common";
-import { EQUIPAMENT_STATUS } from "../enums";
+import { EQUIPAMENT_STATUS } from "../prisma";
 
 const pk2 = t.Optional(t.Number());
 const pk3 = t.Optional(t.Number());

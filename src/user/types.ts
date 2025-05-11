@@ -1,5 +1,5 @@
 import { t } from "elysia";
-import { ROLE } from "../enums";
+import { ROLE } from "../prisma";
 import { id, createdAt, updatedAt, updatedBy } from "../common";
 
 const name = t.String();
