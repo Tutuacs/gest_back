@@ -1,5 +1,5 @@
 model ReportType {
-  id               BigInt            @id @default(autoincrement())
+  id               Int            @id @default(autoincrement())
   name             String
   description      String?
   reportFieldType  ReportFieldType[]
@@ -8,6 +8,6 @@ model ReportType {
   updatedBy        User?             @relation(fields: [updatedById], references: [id])
   updatedById      Int?
   EquipamentType   EquipamentType?   @relation(fields: [equipamentTypeId], references: [id])
-  equipamentTypeId BigInt?
+  equipamentTypeId Int?
   Report           Report[]
 }

@@ -1,6 +1,6 @@
 
 model FieldType {
-  id               BigInt          @id @default(autoincrement())
+  id               Int          @id @default(autoincrement())
   name             String
   type             FIELD_TYPES
   optional         Boolean         @default(false)
@@ -11,6 +11,6 @@ model FieldType {
   updatedBy        User?           @relation(fields: [updatedById], references: [id])
   updatedById      Int?
   EquipamentType   EquipamentType? @relation(fields: [equipamentTypeId], references: [id])
-  equipamentTypeId BigInt?
+  equipamentTypeId Int?
   Field            Field[]
 }

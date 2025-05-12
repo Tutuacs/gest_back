@@ -1,5 +1,5 @@
 model EquipamentType {
-  id          BigInt        @id @default(autoincrement())
+  id          Int        @id @default(autoincrement())
   name        String        @unique
   description String?
   fieldType   FieldType[]

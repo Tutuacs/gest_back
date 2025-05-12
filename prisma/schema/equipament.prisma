@@ -1,15 +1,16 @@
 model Equipament {
-  id               BigInt            @id @default(autoincrement())
+  id               Int            @id @default(autoincrement())
   pk2              String            @unique
   pk3              String            @unique
   pk4              String            @unique
   name             String
   status           EQUIPAMENT_STATUS @default(INACTIVE)
   type             EquipamentType?   @relation(fields: [equipamentTypeId], references: [id])
-  equipamentTypeId BigInt?
+  equipamentTypeId Int?
   description      String?
-  Fields            Field[]
+  Fields           Field[]
   License          License[]
   Updater          Updater?          @relation(fields: [updaterId], references: [id])
   updaterId        Int?
+  Movimentation    Movimentation[]
 }

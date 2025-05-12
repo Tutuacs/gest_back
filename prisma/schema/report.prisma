@@ -1,9 +1,9 @@
 model Report {
-  id           BigInt        @id @default(autoincrement())
+  id           Int        @id @default(autoincrement())
   name         String
   date         DateTime      @default(now())
   status       String
   reportType   ReportType?   @relation(fields: [reportTypeId], references: [id])
-  reportTypeId BigInt?
+  reportTypeId Int?
   ReportField  ReportField[]
 }
