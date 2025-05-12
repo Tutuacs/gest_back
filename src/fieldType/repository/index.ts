@@ -17,6 +17,15 @@ export class fieldTypeRepository {
         });
     }
 
+    async existCombination(name: string, equipamentTypeId: number) {
+        return 0 < await this.prisma.fieldType.count({
+            where: {
+                name,
+                equipamentTypeId,
+            },
+        });
+    }
+
     async create(data: FieldType) {
         return await this.prisma.fieldType.create({
             data,

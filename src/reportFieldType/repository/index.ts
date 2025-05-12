@@ -16,6 +16,15 @@ export class reportFieldTypeRepository {
         });
     }
 
+    async existCombination(name: string, reportTypeId: number) {
+        return 0 < await this.prisma.reportFieldType.count({
+            where: {
+                name: name,
+                reportTypeId: reportTypeId,
+            },
+        });
+    }
+
     async create(data: ReportFieldType) {
         return this.prisma.reportFieldType.create({
             data,
@@ -38,7 +47,7 @@ export class reportFieldTypeRepository {
         });
     }
 
-    async list({skip, take}: {skip?: number, take?: number}) {
+    async list({ skip, take }: { skip?: number, take?: number }) {
         return this.prisma.reportFieldType.findMany({
             skip,
             take,

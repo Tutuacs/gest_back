@@ -10,4 +10,6 @@ model ReportType {
   equipamentTypeId Int
   Report           Report[]
   reportFieldType  ReportFieldType[]
+
+  @@unique([name, equipamentTypeId])
 }

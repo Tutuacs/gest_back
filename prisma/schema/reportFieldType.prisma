@@ -13,4 +13,6 @@ model ReportFieldType {
   ReportType   ReportType    @relation(fields: [reportTypeId], references: [id])
   reportTypeId Int
   ReportField  ReportField[]
+
+  @@unique([name, reportTypeId])
 }

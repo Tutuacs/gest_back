@@ -16,6 +16,15 @@ export class reportTypeRepository {
         });
     }
 
+    async existCombination(name: string, equipamentTypeId: number) {
+        return 0 < await this.prisma.reportType.count({
+            where: {
+                name,
+                equipamentTypeId,
+            },
+        });
+    }
+
     async create(data: ReportType) {
         return await this.prisma.reportType.create({
             data,

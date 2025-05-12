@@ -16,6 +16,15 @@ export class licenseTypeRepository {
         });
     }
 
+    async existCombination(name: string, equipamentTypeId: number) {
+        return 0 < await this.prisma.licenseType.count({
+            where: {
+                name: name,
+                equipamentTypeId: equipamentTypeId,
+            },
+        });
+    }
+
     async create(data: LicenseType) {
         return this.prisma.licenseType.create({
             data,

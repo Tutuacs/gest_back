@@ -12,4 +12,6 @@ model FieldType {
   EquipamentType   EquipamentType @relation(fields: [equipamentTypeId], references: [id])
   equipamentTypeId Int
   Field            Field[]
+
+  @@unique([name, equipamentTypeId])
 }
