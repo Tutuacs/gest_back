@@ -46,7 +46,7 @@ export class fieldTypeRepository {
         });
     }
 
-    async update(id: number, data: FieldType) {
+    async update(id: number, data: Partial<FieldType>) {
         return await this.prisma.fieldType.update({
             where: {
                 id: id,
