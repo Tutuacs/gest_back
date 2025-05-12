@@ -8,6 +8,14 @@ export class reportTypeRepository {
         this.prisma = new PrismaClient();
     }
 
+    async exist(id: number): Promise<boolean> {
+        return 0 < await this.prisma.reportType.count({
+            where: {
+                id,
+            },
+        });
+    }
+
     async create(data: ReportType) {
         return await this.prisma.reportType.create({
             data,
