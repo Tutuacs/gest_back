@@ -1,15 +1,14 @@
 import { t } from "elysia"
 import { id, createdAt, updatedAt, updatedById } from "../common"
-import { equipament } from "../equipament/types"
 
-const equipamentId = equipament.properties.id
+const equipamentTypeId = t.Number()
 const name = t.String()
 const description = t.String()
 
 
 export const reportType = t.Object({
     id,
-    equipamentId: equipamentId,
+    equipamentTypeId: equipamentTypeId,
     name: name,
     description: description,
     createdAt,
