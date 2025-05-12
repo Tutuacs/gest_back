@@ -10,6 +10,7 @@ describe("FieldTypeRepository Repository", () => {
         const data: FieldType = {
             name: "FieldType",
             type: "STRING",
+            equipamentTypeId: 1,
             optional: false,
         }
 
@@ -49,6 +50,7 @@ describe("FieldTypeRepository Repository", () => {
             id,
             name: "FieldType deleted",
             type: "STRING",
+            equipamentTypeId: 1,
             optional: false,
         }
         // Create
@@ -74,6 +76,7 @@ describe("FieldTypeRepository Repository", () => {
         const data: FieldType = {
             name: "FieldType updated",
             type: "NUMBER",
+            equipamentTypeId: 1,
             optional: true,
         }
         // Update
@@ -87,6 +90,7 @@ describe("FieldTypeRepository Repository", () => {
         const revert = await fieldType.update(id, {
             name: "FieldType",
             type: "STRING",
+            equipamentTypeId: 1,
             optional: false,
         })
         expect(revert).not.toBe(null)

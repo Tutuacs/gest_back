@@ -5,8 +5,8 @@ model Equipament {
   serie            String            @unique
   name             String
   status           EQUIPAMENT_STATUS @default(INACTIVE)
-  type             EquipamentType?   @relation(fields: [equipamentTypeId], references: [id])
-  equipamentTypeId Int?
+  type             EquipamentType    @relation(fields: [equipamentTypeId], references: [id])
+  equipamentTypeId Int
   description      String?
   Fields           Field[]
   License          License[]

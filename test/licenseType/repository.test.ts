@@ -11,6 +11,7 @@ describe("LicenseTypeRepository Repository", () => {
             name: "LicenseType",
             description: "LicenseType description",
             type: "STRING",
+            equipamentTypeId: 1,
             unvalidOnMoviment: false,
         }
 
@@ -54,6 +55,7 @@ describe("LicenseTypeRepository Repository", () => {
             name: "LicenseType deleted",
             description: "LicenseType deleted description",
             type: "STRING",
+            equipamentTypeId: 1,
             unvalidOnMoviment: false,
         }
         // Create
@@ -77,6 +79,7 @@ describe("LicenseTypeRepository Repository", () => {
             name: "LicenseType updated",
             description: "LicenseType updated description",
             type: "STRING",
+            equipamentTypeId: 1,
             unvalidOnMoviment: false,
         }
         // Update
@@ -98,6 +101,7 @@ describe("LicenseTypeRepository Repository", () => {
             name: "LicenseType",
             description: "LicenseType description",
             type: "STRING",
+            equipamentTypeId: 1,
             unvalidOnMoviment: false,
         })
     })

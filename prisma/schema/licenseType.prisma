@@ -1,15 +1,14 @@
-
 model LicenseType {
-  id                Int          @id @default(autoincrement())
+  id                Int            @id @default(autoincrement())
   name              String
-  unvalidOnMoviment Boolean         @default(false)
+  unvalidOnMoviment Boolean        @default(false)
   type              String
   description       String?
-  createdAt         DateTime        @default(now())
-  updatedAt         DateTime        @updatedAt
-  updatedBy         User?           @relation(fields: [updatedById], references: [id])
+  createdAt         DateTime       @default(now())
+  updatedAt         DateTime       @updatedAt
+  updatedBy         User?          @relation(fields: [updatedById], references: [id])
   updatedById       Int?
-  EquipamentType    EquipamentType? @relation(fields: [equipamentTypeId], references: [id])
-  equipamentTypeId  Int?
+  EquipamentType    EquipamentType @relation(fields: [equipamentTypeId], references: [id])
+  equipamentTypeId  Int
   License           License[]
 }

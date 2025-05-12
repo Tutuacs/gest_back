@@ -9,6 +9,7 @@ describe("ReportTypeRepository Repository", () => {
         const id: number = 1
         const data: ReportType = {
             id,
+            equipamentTypeId: id,
             name: "ReportType",
             description: "ReportType description",
         }
@@ -42,6 +43,7 @@ describe("ReportTypeRepository Repository", () => {
         const id: number = 2
         const data: ReportType = {
             id,
+            equipamentTypeId: id,
             name: "ReportType deleted",
             description: "ReportType deleted description",
         }
@@ -67,6 +69,7 @@ describe("ReportTypeRepository Repository", () => {
     it("should update a reportType", async () => {
         const id: number = 1
         const data: ReportType = {
+            equipamentTypeId: id,
             name: "ReportType updated",
             description: "ReportType updated description",
         }

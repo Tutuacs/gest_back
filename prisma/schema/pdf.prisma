@@ -1,8 +1,7 @@
-
 model PDF {
-  id        Int  @id @default(autoincrement())
+  id        Int     @id @default(autoincrement())
   name      String
   base64    String  @db.Text
   License   License @relation(fields: [licenseId], references: [id])
-  licenseId Int  @unique
+  licenseId Int     @unique
 }

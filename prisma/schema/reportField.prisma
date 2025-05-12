@@ -1,8 +1,8 @@
 model ReportField {
-  id                Int           @id @default(autoincrement())
-  reportFieldType   ReportFieldType? @relation(fields: [reportFieldTypeId], references: [id])
-  reportFieldTypeId Int?
+  id                Int             @id @default(autoincrement())
+  reportFieldType   ReportFieldType @relation(fields: [reportFieldTypeId], references: [id])
+  reportFieldTypeId Int
   value             String
-  report            Report           @relation(fields: [reportId], references: [id])
+  report            Report          @relation(fields: [reportId], references: [id])
   reportId          Int
 }
