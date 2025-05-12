@@ -1,9 +1,11 @@
 model ReportFieldType {
-  id           Int        @id @default(autoincrement())
+  id           Int           @id @default(autoincrement())
   name         String
   type         FIELD_TYPES
   max          String?
   min          String?
+  description  String?
+  optional     Boolean       @default(false)
   createdAt    DateTime      @default(now())
   updatedAt    DateTime      @updatedAt
   updatedBy    User?         @relation(fields: [updatedById], references: [id])
