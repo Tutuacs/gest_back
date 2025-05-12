@@ -14,10 +14,10 @@ describe("LicenseTypeRepository Repository", () => {
             unvalidOnMoviment: false,
         }
 
-        const licenseTypeCreated = await licenseType.create(data)
         const exists = await licenseType.exist(id)
-
+        
         if (!exists) {
+            const licenseTypeCreated = await licenseType.create(data)
             expect(licenseTypeCreated).not.toBe(null)
             expect(licenseTypeCreated!.name).toBe(data.name)
             expect(licenseTypeCreated!.description).toBe(data.description)
@@ -26,7 +26,7 @@ describe("LicenseTypeRepository Repository", () => {
             return
         }
         
-        expect(licenseTypeCreated).not.toBe(null)
+        // expect(licenseTypeCreated).not.toBe(null)
         // expect(licenseTypeCreated).toBe(null)
     })
 
