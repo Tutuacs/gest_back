@@ -1,9 +1,8 @@
 import { t } from "elysia";
-import { reportType } from "../reportType/types";
-import { id, createdAt, updatedAt, updatedBy } from "../common";
+import { id, createdAt, updatedAt, updatedById } from "../common";
 import { FIELD_TYPES } from "../prisma";
 
-const reportTypeId = reportType.properties.id;
+const reportTypeId = t.Number();
 const name = t.String();
 const type = t.Enum(FIELD_TYPES);
 const optional = t.Boolean();
@@ -16,7 +15,7 @@ export const reportFieldType = t.Object({
     optional: optional,
     createdAt,
     updatedAt,
-    updatedBy,
+    updatedById,
 });
 
 export type ReportFieldType = typeof reportFieldType.static;

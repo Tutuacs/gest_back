@@ -1,6 +1,6 @@
 import { t } from "elysia";
 import { equipamentType } from "../equipamentType/types";
-import { id, createdAt, updatedAt, updatedBy } from "../common";
+import { id, createdAt, updatedAt, updatedById } from "../common";
 import { EQUIPAMENT_STATUS } from "../prisma";
 
 const pk2 = t.Optional(t.Number());
@@ -24,5 +24,5 @@ export const equipament = t.Object({
     description: description,
     createdAt,
     updatedAt,
-    updatedBy,
+    updatedById,
 })

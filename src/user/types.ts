@@ -1,6 +1,6 @@
 import { t } from "elysia";
 import { ROLE } from "../prisma";
-import { id, createdAt, updatedAt, updatedBy } from "../common";
+import { id, createdAt, updatedAt, updatedById } from "../common";
 
 const name = t.String();
 const email = t.String();
@@ -15,7 +15,7 @@ export const user = t.Object({
     role: role,
     createdAt,
     updatedAt,
-    updatedBy,
+    updatedById,
 });
 
 export type User = typeof user.static;

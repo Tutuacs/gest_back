@@ -1,6 +1,6 @@
 import { t } from "elysia";
 import { licenseType } from "../licenseType/types";
-import { createdAt, id, updatedAt, updatedBy } from "../common";
+import { createdAt, id, updatedAt, updatedById } from "../common";
 
 const name = t.String();
 const base64 = t.String();
@@ -28,7 +28,7 @@ export const licenseValue = t.Object({
     pdfId: pdfId,
     createdAt,
     updatedAt,
-    updatedBy,
+    updatedById,
 });
 
 export type licenseValue = typeof licenseValue.static

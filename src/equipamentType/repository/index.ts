@@ -51,7 +51,7 @@ export class equipamentTypeRepository {
         });
     }
 
-    async update(id: number, data: EquipamentType) {
+    async update(id: number, data: Partial<EquipamentType>) {
         return await this.prisma.equipamentType.update({
             where: {
                 id: id,

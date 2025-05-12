@@ -1,5 +1,5 @@
 import { t } from "elysia";
-import { createdAt, id, updatedAt, updatedBy } from "../common";
+import { createdAt, id, updatedAt, updatedById } from "../common";
 import { FIELD_TYPES } from "../prisma";
 
 const name = t.String()
@@ -13,7 +13,7 @@ export const fieldType = t.Object({
     optional: optional,
     createdAt,
     updatedAt,
-    updatedBy,
+    updatedById,
 });
 
 export type FieldType = typeof fieldType.static

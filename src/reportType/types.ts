@@ -1,5 +1,5 @@
 import { t } from "elysia"
-import { id, createdAt, updatedAt, updatedBy } from "../common"
+import { id, createdAt, updatedAt, updatedById } from "../common"
 import { equipament } from "../equipament/types"
 
 const equipamentId = equipament.properties.id
@@ -14,7 +14,7 @@ export const reportType = t.Object({
     description: description,
     createdAt,
     updatedAt,
-    updatedBy,
+    updatedById,
 })
 
 export type ReportType = typeof reportType.static

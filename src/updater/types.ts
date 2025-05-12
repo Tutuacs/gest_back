@@ -2,7 +2,7 @@ import { t } from "elysia";
 import { user } from "../user/types";
 import { licenseValue } from "../licenseValue/types";
 import { movimentation } from "../movimentation/types";
-import { id, createdAt, updatedAt, updatedBy } from "../common";
+import { id, createdAt, updatedAt, updatedById } from "../common";
 import { reportType } from "../reportType/types";
 import { equipament } from "../equipament/types";
 
@@ -21,5 +21,5 @@ export const updater = t.Object({
     reportId: reportId,
     createdAt,
     updatedAt,
-    updatedBy,
+    updatedById,
 })

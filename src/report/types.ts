@@ -15,5 +15,5 @@ export const report = t.Object({
     description: description,
     createdAt,
     updatedAt,
-    updatedBy,
+    updatedById,
 })

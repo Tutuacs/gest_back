@@ -1,8 +1,7 @@
 import { t } from "elysia";
-import { createdAt, id, updatedBy } from "../common";
-import { equipament } from "../equipament/types";
+import { createdAt, id, updatedById } from "../common";
 
-const equipamentId = equipament.properties.id;
+const equipamentId = t.Number();
 const date = t.Date();
 const description = t.String();
 
@@ -12,7 +11,7 @@ export const movimentation = t.Object({
     date: date,
     description: description,
     createdAt,
-    updatedBy,
+    updatedById,
 });
 
 export type Movimentation = typeof movimentation.static

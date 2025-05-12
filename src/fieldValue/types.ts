@@ -1,5 +1,5 @@
 import { t } from "elysia";
-import { createdAt, id, updatedAt, updatedBy } from "../common";
+import { createdAt, id, updatedAt, updatedById } from "../common";
 import { fieldType } from "../fieldType/types";
 
 const value = t.String();
@@ -11,7 +11,7 @@ export const fieldValue = t.Object({
     value: value,
     createdAt,
     updatedAt,
-    updatedBy,
+    updatedById,
 })
 
 export type FieldValue = typeof fieldValue.static

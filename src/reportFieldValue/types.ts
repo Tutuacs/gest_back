@@ -1,5 +1,5 @@
 import { t } from "elysia";
-import { id, createdAt, updatedAt, updatedBy } from "../common";
+import { id, createdAt, updatedAt, updatedById } from "../common";
 import { report } from "../report/types";
 
 const reportId = report.properties.id;
@@ -13,5 +13,5 @@ export const reportFieldValue = t.Object({
     value: value,
     createdAt,
     updatedAt,
-    updatedBy,
+    updatedById,
 });
