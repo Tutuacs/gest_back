@@ -1,8 +1,9 @@
-import Elysia from "elysia";
+import Elysia, { getResponseSchemaValidator } from "elysia";
+import { validationSchema } from "./validation/list";
 
 export const list = new Elysia({ name: "ListEquipamentType" })
-    .get("/", () => {
+    .get("/", ({query: { skip, take}}) => {
         return {
             message: "List equipament types successfully",
         };
-    });
+    }, validationSchema);
