@@ -26,10 +26,9 @@ describe("EquipamentTypeRepository Repository", () => {
 
     it("should find an equipamentType", async () => {
         const id: number = 1
-        const idBigInt: bigint = BigInt(id)
         const equipamentType = await eqType.find(id)
         expect(equipamentType).not.toBe(null)
-        expect(equipamentType!.id).toBe(idBigInt)
+        expect(equipamentType!.id).toBe(id)
         expect(equipamentType!.name).toBe("EquipamentType")
         expect(equipamentType!.description).toBe("Description")
     })
@@ -42,7 +41,6 @@ describe("EquipamentTypeRepository Repository", () => {
 
     it("should delete an equipamentType", async () => {
         const id: number = 2
-        const idBigInt: bigint = BigInt(id)
         const data: EquipamentType = {
             id: id,
             name: "EquipamentType deleted",
@@ -59,13 +57,13 @@ describe("EquipamentTypeRepository Repository", () => {
         // Check if it was created correctly
         const equipamentType = await eqType.find(id)
         expect(equipamentType).not.toBe(null)
-        expect(equipamentType!.id).toBe(idBigInt)
+        expect(equipamentType!.id).toBe(id)
         expect(equipamentType!.name).toBe(data.name)
         expect(equipamentType!.description).toBe(data.description)
         // Delete
         const deleted = await eqType.delete(id)
         expect(deleted).not.toBe(null)
-        expect(deleted!.id).toBe(idBigInt)
+        expect(deleted!.id).toBe(id)
         const existsAfterDelete = await eqType.existName(data.name)
         expect(existsAfterDelete).toBe(false)
         const equipamentTypeAfterDelete = await eqType.find(id)
@@ -74,7 +72,6 @@ describe("EquipamentTypeRepository Repository", () => {
 
     it("should update an equipamentType", async () => {
         const id: number = 1
-        const idBigInt: bigint = BigInt(id)
         const data: EquipamentType = {
             name: "EquipamentType Updated",
             description: "Description Updated",
@@ -82,7 +79,7 @@ describe("EquipamentTypeRepository Repository", () => {
 
         const equipamentType = await eqType.update(id, data)
         expect(equipamentType).not.toBe(null)
-        expect(equipamentType!.id).toBe(idBigInt)
+        expect(equipamentType!.id).toBe(id)
         expect(equipamentType!.name).toBe(data.name)
         expect(equipamentType!.description).toBe(data.description)
         const revert = {

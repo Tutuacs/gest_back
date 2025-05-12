@@ -29,10 +29,9 @@ describe("FieldTypeRepository Repository", () => {
 
     it("should find a fieldType", async () => {
         const id: number = 1
-        const idBigInt: bigint = BigInt(id)
         const fieldTypeFound = await fieldType.find(id)
         expect(fieldTypeFound).not.toBe(null)
-        expect(fieldTypeFound!.id).toBe(idBigInt)
+        expect(fieldTypeFound!.id).toBe(id)
         expect(fieldTypeFound!.name).toBe("FieldType")
         expect(fieldTypeFound!.type).toBe("STRING")
         expect(fieldTypeFound!.optional).toBe(false)
@@ -46,7 +45,6 @@ describe("FieldTypeRepository Repository", () => {
 
     it("should delete a fieldType", async () => {
         const id: number = 2
-        const idBigInt: bigint = BigInt(id)
         const data: FieldType = {
             id,
             name: "FieldType deleted",
@@ -65,7 +63,7 @@ describe("FieldTypeRepository Repository", () => {
         // Delete
         const deleted = await fieldType.delete(id)
         expect(deleted).not.toBe(null)
-        expect(deleted!.id).toBe(idBigInt)
+        expect(deleted!.id).toBe(id)
         // Check if it was deleted correctly
         const existsAfterDelete = await fieldType.exist(id)
         expect(existsAfterDelete).toBe(false)
@@ -73,7 +71,6 @@ describe("FieldTypeRepository Repository", () => {
 
     it("should update a fieldType", async () => {
         const id: number = 1
-        const idBigInt: bigint = BigInt(id)
         const data: FieldType = {
             name: "FieldType updated",
             type: "NUMBER",
@@ -82,7 +79,7 @@ describe("FieldTypeRepository Repository", () => {
         // Update
         const updated = await fieldType.update(id, data)
         expect(updated).not.toBe(null)
-        expect(updated!.id).toBe(idBigInt)
+        expect(updated!.id).toBe(id)
         expect(updated!.name).toBe(data.name)
         expect(updated!.type).toBe(data.type)
         expect(updated!.optional).toBe(data.optional)
@@ -93,7 +90,7 @@ describe("FieldTypeRepository Repository", () => {
             optional: false,
         })
         expect(revert).not.toBe(null)
-        expect(revert!.id).toBe(idBigInt)
+        expect(revert!.id).toBe(id)
         expect(revert!.name).toBe("FieldType")
         expect(revert!.type).toBe("STRING")
         expect(revert!.optional).toBe(false)
