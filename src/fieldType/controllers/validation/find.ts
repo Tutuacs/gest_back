@@ -14,9 +14,9 @@ export const validationSchema = {
     },
 
     detail: {
-        name: "",
+        name: "Find Field Type",
         method: "GET",
-        description: "",
-        tags: [""],
+        description: "This route should find a field type by id and return it, if it doesn't exist it should return not found error",
+        tags: ["Field Type"],
     }
 }

@@ -16,9 +16,9 @@ export const validationSchema = {
 
 
     detail: {
-        name: "",
+        name: "List Equipament Type",
         method: "GET",
-        description: "",
-        tags: [""],
+        description: "This route should list equipament types, based on the optional params skip && take to list by pagination.",
+        tags: ["Equipament Type"],
     }
 }

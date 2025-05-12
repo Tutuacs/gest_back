@@ -19,9 +19,9 @@ export const validationSchema = {
     },
 
     detail: {
-        name: "",
-        method: "GET",
-        description: "",
-        tags: [""],
+        name: "Update Field Type",
+        method: "PUT",
+        description: "This route should update a field type and return it, if it doesn't exist it should return not found error",
+        tags: ["Field Type"],
     }
 }
