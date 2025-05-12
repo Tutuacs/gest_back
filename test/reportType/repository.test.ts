@@ -43,7 +43,7 @@ describe("ReportTypeRepository Repository", () => {
         const id: number = 2
         const data: ReportType = {
             id,
-            equipamentTypeId: id,
+            equipamentTypeId: 1,
             name: "ReportType deleted",
             description: "ReportType deleted description",
         }
