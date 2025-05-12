@@ -1,4 +1,5 @@
 import Elysia from "elysia";
+import { validationSchema } from "./validation/login";
 
 export const login = new Elysia({ name: "Login" })
     .post("/login", ({ body }) => {
@@ -6,4 +7,4 @@ export const login = new Elysia({ name: "Login" })
             message: "Login successfully",
             data: body
         };
-    })
+    }, validationSchema)
