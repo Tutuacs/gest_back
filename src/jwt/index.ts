@@ -1,5 +1,5 @@
 import jwt from "@elysiajs/jwt";
-import Elysia from "elysia";
+import Elysia, { t } from "elysia";
 import { jwtPayloadSchema } from "./type";
 
 type CookieValue = {
@@ -10,6 +10,16 @@ type CookieValue = {
 };
 
 export const authenticator = new Elysia({ name: "Authenticator" })
+    .guard({
+        response: {
+            405: t.Object({
+                message: t.String({default: "Method Not Allowed, by Role"}),
+            }),
+            401: t.Object({
+                message: t.String({default: "Unauthorized"}),
+            }),
+        }
+    })
     .use(
         jwt({
             info: {
