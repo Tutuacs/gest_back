@@ -1,4 +1,3 @@
-import { ROLE } from "../../enums";
 import { PrismaClient } from "../../prisma/client";
 import * as bcrypt from "bcrypt";
 
@@ -17,20 +16,12 @@ export class authRepository {
         });
     }
 
-    async login(email: string, password: string) {
+    async login(email: string) {
         const user = await this.prisma.user.findUnique({
             where: {
                 email: email,
             },
         });
-
-        if (!user) {
-            return null;
-        }
-
-        if (!this.validPassword(password, user.password)) {
-            return null;
-        }
 
         return user;
     }
@@ -49,6 +40,12 @@ export class authRepository {
                 Updater: {
                     create: {}
                 }
+            },
+            select: {
+                id: true,
+                name: true,
+                email: true,
+                role: true,
             },
         });
 
