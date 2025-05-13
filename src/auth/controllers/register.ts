@@ -3,10 +3,10 @@ import { validationSchema } from "./validation/register";
 import { authRepository } from "../repository";
 
 export const register = new Elysia({ name: "Register" })
-    .decorate("db", new authRepository())
-    .post("/register", async({ set, body, db }) => {
+    .decorate("authRepository", new authRepository())
+    .post("/register", async({ set, body, authRepository }) => {
         
-        const user = await db.register(body.email, body.password);
+        const user = await authRepository.register(body.email, body.password);
 
         if (!user) {
             set.status = 409;

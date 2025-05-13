@@ -6,10 +6,10 @@ import { jwtPayloadSchema } from "../../jwt/type";
 
 export const login = new Elysia({ name: "Login" })
     .use(authenticator)
-    .decorate("db", new authRepository())
-    .post("/login", async({ body, db, set, setInfo }) => {
+    .decorate("authRepository", new authRepository())
+    .post("/login", async({ body, authRepository, set, setInfo }) => {
 
-        const login = await db.login(body.email);
+        const login = await authRepository.login(body.email);
 
         if (!login) {
             set.status = 401;
@@ -17,7 +17,7 @@ export const login = new Elysia({ name: "Login" })
                 message: "Invalid email",
             };
         }
-        const valid = await db.validPassword(body.password, login.password);
+        const valid = await authRepository.validPassword(body.password, login.password);
         if (!valid) {
             set.status = 401;
             return {
