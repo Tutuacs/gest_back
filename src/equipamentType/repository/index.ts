@@ -17,12 +17,15 @@ export class equipamentTypeRepository {
         });
     }
 
+    async exist(id: number) {
+        return 0 < await this.prisma.equipamentType.count({
+            where: {
+                id: id,
+            },
+        });
+    }
+
     async create(data: EquipamentType) {
-
-        if (await this.existName(data.name)) {
-            return null;
-        }
-
         return await this.prisma.equipamentType.create({
             data,
         });
