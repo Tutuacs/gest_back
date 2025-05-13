@@ -1,5 +1,13 @@
 import { t } from "elysia";
 import { credentials } from "../../types";
+import { ROLE } from "../../../prisma";
+
+const userResponse = t.Object({
+    id: t.Optional(t.Number()),
+    email: t.String(),
+    name: t.String(),
+    role: t.Enum(ROLE),
+});
 
 export const validationSchema = {
 
@@ -8,7 +16,7 @@ export const validationSchema = {
     response: {
         200: t.Union([
             t.Object({
-                message: t.String(),
+                user: userResponse,
             }),
             t.Cookie({
                 auth: t.String(),
@@ -16,11 +24,13 @@ export const validationSchema = {
                 httpOnly: true,
                 secure: true,
                 sameSite: "strict",
-            })
+            }),
         ]),
+
         401: t.Object({
             message: t.String(),
         }),
+
     },
 
     detail: {

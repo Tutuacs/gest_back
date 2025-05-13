@@ -1,12 +1,20 @@
 import { t } from "elysia";
 import { credentials } from "../../types";
+import { ROLE } from "../../../prisma";
+
+const userResponse = t.Object({
+    id: t.Optional(t.Number()),
+    name: t.String(),
+    email: t.String(),
+    role: t.Enum(ROLE),
+});
 
 export const validationSchema = {
         body: credentials,
     
         response: {
             200: t.Object({
-                message: t.String(),
+                user: userResponse,
             }),
             409: t.Object({
                 message: t.String(),
