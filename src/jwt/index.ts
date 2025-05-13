@@ -12,19 +12,21 @@ type CookieValue = {
 export const authenticator = new Elysia({ name: "Authenticator" })
     .use(
         jwt({
-            name: "jwt",
             info: {
                 user: jwtPayloadSchema,
             },
             expiresIn: "7d",
-            secret: process.env.JWT_SECRET || "secret",
+            secret: "secret",
+            // secret: process.env.JWT_SECRET || "secret",
         })
     )
-    .derive({as: 'scoped'}, ({ jwt, cookie: { auth } }) => {
+    .derive({as: 'scoped'}, ({ jwt, cookie: { auth, userInfo } }) => {
         return {
 
             async logOut() {
-                return auth.remove();
+                auth.remove()
+                userInfo.remove();
+                return
             },
 
             async setInfo(user: jwtPayloadSchema) {
@@ -35,13 +37,21 @@ export const authenticator = new Elysia({ name: "Authenticator" })
 
                 const value: CookieValue = { token, info: {user: user} };
 
-                return auth.set({
+                userInfo.set({
+                    value: JSON.stringify(value.info.user),
+                    httpOnly: false,
+                    expires,
+                })
+
+                auth.set({
                     value: JSON.stringify(value),
                     httpOnly: true,
                     secure: true,
                     sameSite: "strict",
                     expires,
                 });
+
+                return
             },
 
             async getInfo(): Promise<jwtPayloadSchema | null> {
@@ -86,4 +96,4 @@ export const authenticator = new Elysia({ name: "Authenticator" })
             }
 
         };
-    });
+    })

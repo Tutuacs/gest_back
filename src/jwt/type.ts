@@ -14,8 +14,8 @@ const user = t.Object({
     role: role,
 });
 
-export const jwtPayloadSchema = {
+export const jwtPayloadSchema = t.Object({
     user: user,
-}
+})
 
-export type jwtPayloadSchema = typeof jwtPayloadSchema;
+export type jwtPayloadSchema = typeof jwtPayloadSchema.static;
