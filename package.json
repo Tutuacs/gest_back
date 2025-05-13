@@ -2,6 +2,7 @@
   "name": "gest_back",
   "version": "1.0.50",
   "scripts": {
+    "studio": "bunx prisma studio --schema=./prisma/schema",
     "migrate": "bunx prisma migrate dev --name init --schema=./prisma/schema",
     "generate": "bunx prisma generate --schema=./prisma/schema",
     "test": "echo \"Error: no test specified\" && exit 1",
