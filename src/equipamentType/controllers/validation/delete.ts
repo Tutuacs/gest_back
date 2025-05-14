@@ -13,7 +13,7 @@ export const validationSchema = {
         200: equipamentType,
 
         404: t.Object({
-            message: t.String(),
+            message: t.String({default: "Equipament Type not found"}),
         })
 
     },

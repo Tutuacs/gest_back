@@ -11,7 +11,7 @@ export const validationSchema = {
         200: equipamentType,
 
         409: t.Object({
-            message: t.String(),
+            message: t.String({default: "Already exists an equipament type with this name"}),
         })
 
     },

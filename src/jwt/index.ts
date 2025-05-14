@@ -17,7 +17,7 @@ export const authenticator = new Elysia({ name: "Authenticator" })
                 message: t.String({ default: "Method Not Allowed, by Role" }),
             }),
             401: t.Object({
-                message: t.String({ default: "Unauthorized" }),
+                message: t.String({ default: "The user Should be logged" }),
             }),
         }
     })
