@@ -1,4 +1,5 @@
 import { describe, expect, it } from "bun:test";
+import { authAdmin, authMaster, authUser } from "../auth/routes.spec";
 
 describe("LicenseType Routes", () => {
 
