@@ -299,7 +299,7 @@ describe("Equipament Type Controller", () => {
             })
         })
 
-        it("should return 409 updating on existent combination", async () => {
+        it("should return 409 updating an existent combination", async () => {
             const id: number = 1
             const response = await fetch(`http://localhost:3000/equipament-type/${id}`, {
                 method: 'PUT',
