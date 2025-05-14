@@ -25,6 +25,15 @@ export class equipamentTypeRepository {
         });
     }
 
+    async canUpdate(id: number, name: string) {
+        return await this.prisma.equipamentType.count({
+            where: {
+                id: id,
+                name: name,
+            },
+        });
+    }
+
     async create(data: EquipamentType) {
         return await this.prisma.equipamentType.create({
             data,
