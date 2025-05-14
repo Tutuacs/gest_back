@@ -14,8 +14,9 @@ describe("EquipamentTypeRepository Repository", () => {
         }
 
         const exists = await eqType.existName(data.name)
-        
-        if (!exists) {
+        const existId = await eqType.exist(id)
+
+        if (!exists && !existId) {
             const equipamentType = await eqType.create(data)
             expect(equipamentType).not.toBe(null)
             expect(equipamentType!.name).toBe(data.name)
