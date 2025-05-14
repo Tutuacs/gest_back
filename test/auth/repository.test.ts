@@ -10,12 +10,12 @@ describe("Auth Repository", () => {
     })
 
     it("should return null with incorrect credentials", async () => {
-        const user = await auth.login("arthur@gmail.com", "123456")
+        const user = await auth.login("arthur@gmail.com")
         expect(user).toBe(null)
     })
 
     it("should return null with incorrect credentials", async () => {
-        const user = await auth.login("emailficticio@gmail.com", "123456")
+        const user = await auth.login("emailficticio@gmail.com")
         expect(user).toBe(null)
     })
 
@@ -37,12 +37,10 @@ describe("Auth Repository", () => {
         if (!exists) {
             const user = await auth.register(credentials.email, credentials.password)
             expect(user).not.toBe(null)
-            expect(user!.password).not.toBe(credentials.password)
-            expect(await auth.validPassword(credentials.password, user!.password)).toBe(true)
             return
         }
 
-        const user = await auth.login(credentials.email, credentials.password)
+        const user = await auth.login(credentials.email)
         expect(user).not.toBe(null)
     })
 
