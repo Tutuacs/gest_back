@@ -28,8 +28,6 @@ export const find = new Elysia({ name: "FindEquipamentType" })
 
         const equipamentType = await equipamentTypeRepository.find(id);
 
-        return {
-            equipamentType,
-            message: `Equipament type with id ${id} found successfully`,
-        };
+        return equipamentType!;
+
     }, validationSchema);

@@ -36,8 +36,6 @@ export const delet = new Elysia({ name: "DeleteEquipamentType" })
 
         const equipamentType = await equipamentTypeRepository.delete(id);
 
-        return {
-            equipamentType,
-            message: `Equipament type with id ${id} deleted successfully`,
-        };
+        return equipamentType;
+
     }, validationSchema); 

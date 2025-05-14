@@ -33,7 +33,7 @@ export const update = new Elysia({ name: "UpdateEquipamentType" })
             };
         }
 
-        const canUpdate = await equipamentTypeRepository.canUpdate(params.id, body.equipamentType.name);
+        const canUpdate = await equipamentTypeRepository.canUpdate(params.id, body.name);
 
         if (!canUpdate) {
             set.status = 409;
@@ -42,11 +42,10 @@ export const update = new Elysia({ name: "UpdateEquipamentType" })
             };
         }
 
-        body.equipamentType.updatedById = token?.user.id;
+        body.updatedById = token?.user.id;
 
-        const updated = await equipamentTypeRepository.update(params.id, body.equipamentType);
+        const updated = await equipamentTypeRepository.update(params.id, body);
 
-        return {
-            equipamentType: updated,
-        };
+        return updated;
+
     }, validationSchema);

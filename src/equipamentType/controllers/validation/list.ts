@@ -1,5 +1,6 @@
 import { t } from "elysia";
 import { equipamentType } from "../../types";
+import { parameters } from "../../../common";
 
 export const validationSchema = {
 
@@ -20,5 +21,6 @@ export const validationSchema = {
         method: "GET",
         description: "This route should list equipament types, based on the optional params skip && take to list by pagination.",
         tags: ["Equipament Type"],
+        parameters,
     }
 }
