@@ -11,6 +11,7 @@ type CookieValue = {
 
 export const authenticator = new Elysia({ name: "Authenticator" })
     .guard({
+        as: "scoped",
         response: {
             405: t.Object({
                 message: t.String({default: "Method Not Allowed, by Role"}),
