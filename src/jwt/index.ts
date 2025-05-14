@@ -14,10 +14,10 @@ export const authenticator = new Elysia({ name: "Authenticator" })
         as: "scoped",
         response: {
             405: t.Object({
-                message: t.String({default: "Method Not Allowed, by Role"}),
+                message: t.String({ default: "Method Not Allowed, by Role" }),
             }),
             401: t.Object({
-                message: t.String({default: "Unauthorized"}),
+                message: t.String({ default: "Unauthorized" }),
             }),
         }
     })
@@ -31,7 +31,7 @@ export const authenticator = new Elysia({ name: "Authenticator" })
             // secret: process.env.JWT_SECRET || "secret",
         })
     )
-    .derive({as: 'scoped'}, ({ jwt, cookie: { auth, userInfo } }) => {
+    .derive({ as: 'scoped' }, ({ jwt, cookie: { auth, userInfo } }) => {
         return {
 
             async logOut() {
@@ -42,11 +42,11 @@ export const authenticator = new Elysia({ name: "Authenticator" })
 
             async setInfo(user: jwtPayloadSchema) {
 
-                const info = JSON.stringify({user: user});
+                const info = JSON.stringify({ user: user });
                 const token = await jwt.sign({ info, });
                 const expires = new Date(Date.now() + 7 * 24 * 60 * 60 * 1000);
 
-                const value: CookieValue = { token, info: {user: user} };
+                const value: CookieValue = { token, info: { user: user } };
 
                 userInfo.set({
                     value: JSON.stringify(value.info.user),
