@@ -37,9 +37,6 @@ export const create = new Elysia({ name: "CreateEquipamentType" })
         body.updatedById = token?.user.id;
         const equipamentType = await equipamentTypeRepository.create(body);
 
-        return {
-            equipamentType,
-            message: "Equipament type created successfully" as string,
-        };
+        return equipamentType;
 
     }, validationSchema);
