@@ -15,6 +15,7 @@ import swagger from "@elysiajs/swagger";
 import cors from "@elysiajs/cors";
 import { AuthHandler } from "./auth";
 import { authenticator } from "./jwt";
+import { ReportTypeHandler } from "./reportType";
 
 const app = new Elysia({ name: "Main" })
   .use(cors())
@@ -29,6 +30,7 @@ const app = new Elysia({ name: "Main" })
   .use(LicenseValueHandler)
   .use(MovimentationHandler)
   .use(ReportHandler)
+  .use(ReportTypeHandler)
   .use(ReportFieldTypeHandler)
   .use(ReportFieldValueHandler)
   .use(UpdaterHandler)
