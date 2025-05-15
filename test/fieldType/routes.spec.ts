@@ -411,28 +411,28 @@ describe("FieldType Routes", () => {
         })
 
         // TODO: Create to test 409 with existent combination [ name, equipamentTypeId ]
-        // it("should return 409 updating an existent combination", async () => {
-        //     const id: number = 2;
-        //     const response = await fetch(`http://localhost:3000/field-type/${id}`, {
-        //         method: 'PUT',
-        //         headers: {
-        //             'Content-Type': 'application/json',
-        //             'Cookie': authMaster
-        //         },
-        //         body: JSON.stringify({
-        //             id: 1,
-        //             name: 'FieldType',
-        //             type: 'STRING',
-        //             optional: true,
-        //             equipamentTypeId: 1,
-        //         })
-        //     });
-        //     expect(response.status).toBe(401);
-        //     const data = await response.json();
-        //     expect(data).toMatchObject({
-        //         message: expect.any(String),
-        //     });
-        // })
+        it("should return 409 updating an existent combination", async () => {
+            const id: number = 3;
+            const response = await fetch(`http://localhost:3000/field-type/${id}`, {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Cookie': authMaster
+                },
+                body: JSON.stringify({
+                    id: 1,
+                    name: 'FieldType',
+                    type: 'STRING',
+                    optional: true,
+                    equipamentTypeId: 1,
+                })
+            });
+            expect(response.status).toBe(409);
+            const data = await response.json();
+            expect(data).toMatchObject({
+                message: expect.any(String),
+            });
+        })
     })
 
 })

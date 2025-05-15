@@ -5,7 +5,7 @@ import { FIELD_TYPES } from "../../../prisma";
 
 const createFieldType = t.Object({
     name: t.String({ description: "Field Type Name", example: "Field Type Name" }),
-    description: t.Optional(t.String({ description: "Field Type Description", example: "Field Type Description" })),
+    // description: t.Optional(t.String({ description: "Field Type Description", example: "Field Type Description" })),
     type: t.Enum(FIELD_TYPES, {
         description: "Field Type Type",
         example: FIELD_TYPES.STRING,
