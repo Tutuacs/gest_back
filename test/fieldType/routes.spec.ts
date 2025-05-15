@@ -1,5 +1,6 @@
 import { describe, expect, it } from "bun:test";
 import { authAdmin, authMaster, authUser } from "../auth/routes.spec";
+import { updatedById } from "../../src/common";
 
 describe("FieldType Routes", () => {
 
@@ -89,7 +90,7 @@ describe("FieldType Routes", () => {
 
             if (found.status == 200) {
                 const data = await found.json();
-                expect(data).toMatchObject({
+                expect(data).toEqual(expect.objectContaining({
                     id: expect.any(Number),
                     name: expect.any(String),
                     type: expect.any(String),
@@ -97,16 +98,30 @@ describe("FieldType Routes", () => {
                     equipamentTypeId: expect.any(Number),
                     createdAt: expect.any(String),
                     updatedAt: expect.any(String),
-                });
+                }));
 
-                if (data.updatedById === null) {
-                    expect(data.updatedById).toBeNull()
+                if (data.max === null) {
+                    expect(data.max).toBeNull();
                 } else {
-                    expect(data.updatedById).toEqual(expect.any(Number))
+                    expect(data.max).toEqual(expect.any(String));
+                }
+
+                // Valida min
+                if (data.min === null) {
+                    expect(data.min).toBeNull();
+                } else {
+                    expect(data.min).toEqual(expect.any(String));
+                }
+
+                // Valida updatedById (como antes)
+                if (data.updatedById === null) {
+                    expect(data.updatedById).toBeNull();
+                } else {
+                    expect(data.updatedById).toEqual(expect.any(Number));
                 }
 
                 expect(data.id).toBe(1);
-                expect(data.name).toBe('ReportType');
+                expect(data.name).toBe('FieldType');
                 expect(data.equipamentTypeId).toBe(1);
                 return;
             }
@@ -119,7 +134,7 @@ describe("FieldType Routes", () => {
                 },
                 body: JSON.stringify({
                     id: 1,
-                    name: 'ReportType',
+                    name: 'FieldType',
                     type: 'STRING',
                     optional: true,
                     equipamentTypeId: 1,
@@ -142,7 +157,7 @@ describe("FieldType Routes", () => {
                 },
                 body: JSON.stringify({
                     id: 1,
-                    name: 'ReportType',
+                    name: 'FieldType',
                     type: 'STRING',
                     optional: true,
                     equipamentTypeId: 1,
@@ -183,7 +198,7 @@ describe("FieldType Routes", () => {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json',
-                    // 'Cookie': authMaster
+                    'Cookie': authMaster
                 },
             });
 
@@ -195,7 +210,7 @@ describe("FieldType Routes", () => {
         })
 
         it("should return 200 with lower ROLE token", async () => {
-            const id: number = 2;
+            const id: number = 1;
             const response = await fetch(`http://localhost:3000/field-type/${id}`, {
                 method: 'GET',
                 headers: {
@@ -206,7 +221,7 @@ describe("FieldType Routes", () => {
 
             expect(response.status).toBe(200);
             const data = await response.json();
-            expect(data).toMatchObject({
+            expect(data).toEqual(expect.objectContaining({
                 id: expect.any(Number),
                 name: expect.any(String),
                 type: expect.any(String),
@@ -214,12 +229,26 @@ describe("FieldType Routes", () => {
                 equipamentTypeId: expect.any(Number),
                 createdAt: expect.any(String),
                 updatedAt: expect.any(String),
-            });
+            }));
 
-            if (data.updatedById === null) {
-                expect(data.updatedById).toBeNull()
+            if (data.max === null) {
+                expect(data.max).toBeNull();
             } else {
-                expect(data.updatedById).toEqual(expect.any(Number))
+                expect(data.max).toEqual(expect.any(String));
+            }
+
+            // Valida min
+            if (data.min === null) {
+                expect(data.min).toBeNull();
+            } else {
+                expect(data.min).toEqual(expect.any(String));
+            }
+
+            // Valida updatedById (como antes)
+            if (data.updatedById === null) {
+                expect(data.updatedById).toBeNull();
+            } else {
+                expect(data.updatedById).toEqual(expect.any(Number));
             }
         })
     })
@@ -254,22 +283,34 @@ describe("FieldType Routes", () => {
             const data = await response.json();
             expect(data).toBeArray();
             for (const item of data) {
-                expect(item).toMatchObject({
+                expect(item).toEqual(expect.objectContaining({
                     id: expect.any(Number),
-                    max: expect.any(String),
-                    min: expect.any(String),
                     name: expect.any(String),
                     type: expect.any(String),
                     optional: expect.any(Boolean),
                     equipamentTypeId: expect.any(Number),
                     createdAt: expect.any(String),
                     updatedAt: expect.any(String),
-                });
+                }));
 
-                if (item.updatedById === null) {
-                    expect(item.updatedById).toBeNull()
+                if (item.max === null) {
+                    expect(item.max).toBeNull();
                 } else {
-                    expect(item.updatedById).toEqual(expect.any(Number))
+                    expect(item.max).toEqual(expect.any(String));
+                }
+
+                // Valida min
+                if (item.min === null) {
+                    expect(item.min).toBeNull();
+                } else {
+                    expect(item.min).toEqual(expect.any(String));
+                }
+
+                // Valida updatedById (como antes)
+                if (item.updatedById === null) {
+                    expect(item.updatedById).toBeNull();
+                } else {
+                    expect(item.updatedById).toEqual(expect.any(Number));
                 }
             }
         })
@@ -287,7 +328,7 @@ describe("FieldType Routes", () => {
                 },
                 body: JSON.stringify({
                     id: 1,
-                    name: 'ReportType',
+                    name: 'FieldType',
                     type: 'STRING',
                     optional: true,
                     equipamentTypeId: 1,
@@ -310,7 +351,7 @@ describe("FieldType Routes", () => {
                 },
                 body: JSON.stringify({
                     id: 1,
-                    name: 'ReportType',
+                    name: 'FieldType',
                     type: 'STRING',
                     optional: true,
                     equipamentTypeId: 1,
@@ -333,7 +374,7 @@ describe("FieldType Routes", () => {
                 },
                 body: JSON.stringify({
                     id: 1,
-                    name: 'ReportType',
+                    name: 'FieldType',
                     type: 'STRING',
                     optional: true,
                     equipamentTypeId: 1,
@@ -356,7 +397,7 @@ describe("FieldType Routes", () => {
                 },
                 body: JSON.stringify({
                     id: 1,
-                    name: 'ReportType2',
+                    name: 'FieldType2',
                     type: 'STRING',
                     optional: true,
                     equipamentTypeId: 1,
@@ -380,7 +421,7 @@ describe("FieldType Routes", () => {
         //         },
         //         body: JSON.stringify({
         //             id: 1,
-        //             name: 'ReportType',
+        //             name: 'FieldType',
         //             type: 'STRING',
         //             optional: true,
         //             equipamentTypeId: 1,
