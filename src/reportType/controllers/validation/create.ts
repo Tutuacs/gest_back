@@ -8,7 +8,7 @@ export const validationSchema = {
     response: {
         200: reportType,
         409: t.Object({
-            message: t.String(),
+            message: t.String({default: "Report type with this name already exists on the selected equipament type"}),
         })
     },
 

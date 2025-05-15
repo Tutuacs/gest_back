@@ -10,7 +10,7 @@ export const validationSchema = {
     response: {
         200: reportType,
         404: t.Object({
-            message: t.String(),
+            message: t.String({default: "Report type Not found"}),
         }),
     },
 

@@ -1,6 +1,5 @@
 import { describe, expect, it } from "bun:test";
 import { authAdmin, authMaster, authUser } from "../auth/routes.spec";
-import { updatedById } from "../../src/common";
 
 describe("FieldType Routes", () => {
 

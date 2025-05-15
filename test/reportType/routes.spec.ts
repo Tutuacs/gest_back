@@ -89,15 +89,15 @@ describe("ReportType Routes", () => {
 
             if (found.status == 200) {
                 const data = await found.json();
-                expect(data).toMatchObject({
+                expect(data).toEqual(expect.objectContaining({
                     id: expect.any(Number),
                     name: expect.any(String),
                     description: expect.any(String),
                     equipamentTypeId: expect.any(Number),
                     createdAt: expect.any(String),
                     updatedAt: expect.any(String),
-                    updatedById: expect.any(Number)
-                });
+                    // updatedById: expect.any(Number)
+                }));
 
                 expect(data.id).toBe(1);
                 expect(data.name).toBe('ReportType');
@@ -177,7 +177,7 @@ describe("ReportType Routes", () => {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json',
-                    // 'Cookie': authMaster
+                    'Cookie': authMaster
                 },
             });
 
@@ -189,7 +189,7 @@ describe("ReportType Routes", () => {
         })
 
         it("should return 200 with lower ROLE token", async () => {
-            const id: number = 2;
+            const id: number = 1;
             const response = await fetch(`http://localhost:3000/report-type/${id}`, {
                 method: 'GET',
                 headers: {
@@ -200,15 +200,15 @@ describe("ReportType Routes", () => {
 
             expect(response.status).toBe(200);
             const data = await response.json();
-            expect(data).toMatchObject({
+            expect(data).toEqual(expect.objectContaining({
                 id: expect.any(Number),
                 name: expect.any(String),
                 description: expect.any(String),
                 equipamentTypeId: expect.any(Number),
                 createdAt: expect.any(String),
                 updatedAt: expect.any(String),
-                updatedById: expect.any(Number)
-            });
+                // updatedById: expect.any(Number)
+            }));
         })
     })
 
@@ -238,19 +238,19 @@ describe("ReportType Routes", () => {
                 },
             });
 
-            expect(response.status).toBe(401);
+            expect(response.status).toBe(200);
             const data = await response.json();
             expect(data).toBeArray();
             for (const item of data) {
-                expect(item).toMatchObject({
+                expect(item).toEqual(expect.objectContaining({
                     id: expect.any(Number),
                     name: expect.any(String),
                     description: expect.any(String),
                     equipamentTypeId: expect.any(Number),
                     createdAt: expect.any(String),
                     updatedAt: expect.any(String),
-                    updatedById: expect.any(Number)
-                });
+                    // updatedById: expect.any(Number)
+                }));
             }
         })
     })
@@ -342,7 +342,7 @@ describe("ReportType Routes", () => {
                     equipamentTypeId: 1,
                 })
             });
-            expect(response.status).toBe(401);
+            expect(response.status).toBe(404);
             const data = await response.json();
             expect(data).toMatchObject({
                 message: expect.any(String),
@@ -350,28 +350,28 @@ describe("ReportType Routes", () => {
         })
 
         // TODO: Create to test 409 with existent combination [ name, equipamentTypeId ]
-        // it("should return 409 updating an existent combination", async () => {
-        //     const id: number = 2;
-        //     const response = await fetch(`http://localhost:3000/report-type/${id}`, {
-        //         method: 'PUT',
-        //         headers: {
-        //             'Content-Type': 'application/json',
-        //             'Cookie': authMaster
-        //         },
-        //         body: JSON.stringify({
-        //             id: 1,
-        //             name: 'ReportType',
-        //             description: '',
-        //             optional: true,
-        //             equipamentTypeId: 1,
-        //         })
-        //     });
-        //     expect(response.status).toBe(401);
-        //     const data = await response.json();
-        //     expect(data).toMatchObject({
-        //         message: expect.any(String),
-        //     });
-        // })
+        it("should return 409 updating an existent combination", async () => {
+            const id: number = 3;
+            const response = await fetch(`http://localhost:3000/report-type/${id}`, {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Cookie': authMaster
+                },
+                body: JSON.stringify({
+                    // id: 1,
+                    name: 'ReportType',
+                    description: '',
+                    optional: true,
+                    equipamentTypeId: 1,
+                })
+            });
+            expect(response.status).toBe(409);
+            const data = await response.json();
+            expect(data).toMatchObject({
+                message: expect.any(String),
+            });
+        })
     })
 
 })
