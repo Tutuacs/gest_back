@@ -1,5 +1,6 @@
 import { t } from "elysia";
 import { fieldType } from "../../types";
+import { parameters } from "../../../common";
 
 export const validationSchema = {
     params: t.Object({
@@ -9,7 +10,7 @@ export const validationSchema = {
     response: {
         200: fieldType,
         404: t.Object({
-            message: t.String(),
+            message: t.String({ default: "Field type not found" }),
         }),
     },
 
@@ -18,5 +19,6 @@ export const validationSchema = {
         method: "GET",
         description: "This route should find a field type by id and return it, if it doesn't exist it should return not found error",
         tags: ["Field Type"],
+        parameters,
     }
 }

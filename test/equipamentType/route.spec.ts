@@ -153,7 +153,7 @@ describe("Equipament Type Controller", () => {
         })
 
         it("should return 404 and a message", async () => {
-            const id: number = 2
+            const id: number = 5
             const response = await fetch(`http://localhost:3000/equipament-type/${id}`, {
                 headers: {
                     'Cookie': authMaster,

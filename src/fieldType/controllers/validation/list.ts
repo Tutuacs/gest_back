@@ -1,5 +1,6 @@
 import { t } from "elysia";
 import { fieldType } from "../../types";
+import { parameters } from "../../../common";
 
 export const validationSchema = {
 
@@ -19,5 +20,6 @@ export const validationSchema = {
         method: "GET",
         description: "This route lists field types, based on the optional params skip && take to list by pagination.",
         tags: ["Field Type"],
+        parameters,
     }
 }

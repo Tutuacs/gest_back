@@ -1,5 +1,6 @@
 import { t } from "elysia";
 import { fieldType } from "../../types";
+import { parameters } from "../../../common";
 
 export const validationSchema = {
     params: t.Object({
@@ -11,10 +12,10 @@ export const validationSchema = {
     response: {
         200: fieldType,
         404: t.Object({
-            message: t.String(),
+            message: t.String({ default: "Field type not found" }),
         }),
         409: t.Object({
-            message: t.String(),
+            message: t.String({ default: "The equipament type already have a field type with this name" }),
         })
     },
 
@@ -23,5 +24,6 @@ export const validationSchema = {
         method: "PUT",
         description: "This route should update a field type and return it, if it doesn't exist it should return not found error",
         tags: ["Field Type"],
+        parameters,
     }
 }
