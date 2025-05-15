@@ -387,7 +387,7 @@ describe("FieldType Routes", () => {
         })
 
         it("should return 404 when object doesnt exist", async () => {
-            const id: number = 5;
+            const id: number = 2;
             const response = await fetch(`http://localhost:3000/field-type/${id}`, {
                 method: 'PUT',
                 headers: {
