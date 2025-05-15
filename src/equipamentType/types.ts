@@ -3,8 +3,8 @@ import { id, createdAt, updatedAt, updatedById } from "../common";
 import { FIELD_TYPES } from "../prisma";
 
 // Base simple types
-const name = t.String();
-const description = t.String();
+const name = t.String({default: ""});
+const description = t.String({default: ""});
 
 // FieldType schema
 const fieldType = t.Object({
@@ -12,8 +12,8 @@ const fieldType = t.Object({
   name,
   type: t.Enum(FIELD_TYPES),
   optional: t.Boolean(),
-  max: t.Union([t.String(), t.Null()]),
-  min: t.Union([t.String(), t.Null()]),
+  max: t.Union([description, t.Null()]),
+  min: t.Union([description, t.Null()]),
   createdAt,
   updatedAt,
   updatedById,
@@ -26,7 +26,7 @@ const licenseType = t.Object({
   name,
   unvalidOnMoviment: t.Boolean(),
   type: t.String(),
-  description: t.Union([t.String(), t.Null()]),
+  description: t.Union([description, t.Null()]),
   createdAt,
   updatedAt,
   updatedById: t.Union([t.Number(), t.Null()]),
@@ -37,7 +37,7 @@ const licenseType = t.Object({
 const reportType = t.Object({
   id,
   name,
-  description: t.Union([t.String(), t.Null()]),  // allow null descriptions
+  description: t.Union([description, t.Null()]),  // allow null descriptions
   createdAt,
   updatedAt,
   updatedById,
@@ -54,7 +54,7 @@ export const createEquipamentType = t.Object({
 export const equipamentType = t.Object({
   id,
   name,
-  description,
+  description: t.Union([description, t.Null()]),
   createdAt,
   updatedAt,
   updatedById,
