@@ -42,9 +42,12 @@ export const update = new Elysia({ name: "UpdateEquipamentType" })
             };
         }
 
-        body.updatedById = token?.user.id;
+        const q = {
+            ...body,
+            updatedById: token?.user.id,
+        }
 
-        const updated = await equipamentTypeRepository.update(params.id, body);
+        const updated = await equipamentTypeRepository.update(params.id, q);
 
         return updated;
 

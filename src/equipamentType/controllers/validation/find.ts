@@ -1,6 +1,6 @@
 import { t } from "elysia";
-import { equipamentType } from "../../types";
 import { parameters } from "../../../common";
+import { equipamentType } from "../../types";
 
 export const validationSchema = {
 

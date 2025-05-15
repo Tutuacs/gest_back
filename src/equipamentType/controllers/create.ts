@@ -33,9 +33,12 @@ export const create = new Elysia({ name: "CreateEquipamentType" })
                 message: "Equipament type already exists" as string,
             };
         }
-        
-        body.updatedById = token?.user.id;
-        const equipamentType = await equipamentTypeRepository.create(body);
+        const q = {
+            ...body,
+            updatedById: token?.user.id,
+        }
+
+        const equipamentType = await equipamentTypeRepository.create(q);
 
         return equipamentType;
 

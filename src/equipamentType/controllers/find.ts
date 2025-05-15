@@ -2,7 +2,6 @@ import Elysia from "elysia";
 import { validationSchema } from "./validation/find";
 import { authenticator } from "../../jwt";
 import { equipamentTypeRepository } from "../repository";
-import { ROLE } from "../../prisma";
 
 export const find = new Elysia({ name: "FindEquipamentType" })
     .use(authenticator)

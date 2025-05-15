@@ -1,10 +1,10 @@
 import { t } from "elysia";
-import { equipamentType } from "../../types";
+import { createEquipamentType, equipamentType } from "../../types";
 import { parameters } from "../../../common";
 
 export const validationSchema = {
 
-    body: equipamentType,
+    body: createEquipamentType,
 
     response: {
 

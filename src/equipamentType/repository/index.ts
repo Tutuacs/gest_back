@@ -1,5 +1,5 @@
 import { PrismaClient } from "../../prisma/client";
-import { EquipamentType } from "../types";
+import { CreateEquipamentType, EquipamentType } from "../types";
 
 
 export class equipamentTypeRepository {
@@ -34,7 +34,7 @@ export class equipamentTypeRepository {
         });
     }
 
-    async create(data: EquipamentType) {
+    async create(data: CreateEquipamentType) {
         return await this.prisma.equipamentType.create({
             data,
         });
@@ -53,6 +53,11 @@ export class equipamentTypeRepository {
             where: {
                 id: id,
             },
+            include: {
+                fieldType: true,
+                licenseType: true,
+                reportType: true,
+            }
         });
     }
 
@@ -63,7 +68,7 @@ export class equipamentTypeRepository {
         });
     }
 
-    async update(id: number, data: Partial<EquipamentType>) {
+    async update(id: number, data: Partial<CreateEquipamentType>) {
         return await this.prisma.equipamentType.update({
             where: {
                 id: id,

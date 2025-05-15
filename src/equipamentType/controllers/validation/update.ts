@@ -1,5 +1,5 @@
 import { t } from "elysia";
-import { equipamentType } from "../../types";
+import { equipamentType, createEquipamentType } from "../../types";
 import { parameters } from "../../../common";
 
 export const validationSchema = {
@@ -8,7 +8,7 @@ export const validationSchema = {
         id: t.Number({ minimum: 1, description: "Equipament Type ID", example: 1 }),
     }),
 
-    body: equipamentType,
+    body: createEquipamentType,
 
     response: {
         200: equipamentType,
