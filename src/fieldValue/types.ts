@@ -1,17 +1,26 @@
 import { t } from "elysia";
 import { createdAt, id, updatedAt, updatedById } from "../common";
-import { fieldType } from "../fieldType/types";
 
 const value = t.String();
-const fieldTypeId = fieldType.properties.id;
+const fieldTypeId = t.Number();
+const equipamentId = t.Number();
+
+export const createFieldValue = t.Object({
+    value: value,
+    fieldTypeId: fieldTypeId,
+    equipamentId: equipamentId,
+    updatedById,
+})
 
 export const fieldValue = t.Object({
     id,
-    fieldTypeId: fieldTypeId,
     value: value,
+    fieldTypeId: fieldTypeId,
+    equipamentId: equipamentId,
     createdAt,
     updatedAt,
     updatedById,
 })
 
 export type FieldValue = typeof fieldValue.static
+export type CreateFieldValue = typeof createFieldValue.static
