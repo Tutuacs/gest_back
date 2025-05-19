@@ -16,6 +16,10 @@ import cors from "@elysiajs/cors";
 import { AuthHandler } from "./auth";
 import { authenticator } from "./jwt";
 import { ReportTypeHandler } from "./reportType";
+import { LocalHandler } from "./local";
+import { LocationHandler } from "./location";
+import { EventHandler } from "./event";
+import { EventTypeHandler } from "./eventType";
 
 const app = new Elysia({ name: "Main" })
   .use(cors())
@@ -29,6 +33,10 @@ const app = new Elysia({ name: "Main" })
   .use(licenseTypeHandler)
   .use(LicenseValueHandler)
   // .use(MovimentationHandler)
+  .use(LocalHandler)
+  .use(LocationHandler)
+  .use(EventHandler)
+  .use(EventTypeHandler)
   .use(ReportHandler)
   .use(ReportTypeHandler)
   .use(ReportFieldTypeHandler)

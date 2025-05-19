@@ -29,7 +29,7 @@ describe("Auth Repository", () => {
 
     it("should return the user", async () => {
         const credentials = {
-            email: "admin@admin.com",
+            email: "master@master.com",
             password: "123",
         }
 

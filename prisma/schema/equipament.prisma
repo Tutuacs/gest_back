@@ -4,13 +4,15 @@ model Equipament {
   tag              String            @unique
   serie            String            @unique
   name             String
+  location         Location          @relation(fields: [locationId], references: [id])
+  locationId       Int
   status           EQUIPAMENT_STATUS @default(INACTIVE)
   type             EquipamentType    @relation(fields: [equipamentTypeId], references: [id])
   equipamentTypeId Int
   description      String?
   Fields           Field[]
   License          License[]
+  Event            Event[]
   Updater          Updater?          @relation(fields: [updaterId], references: [id])
   updaterId        Int?
-  Movimentation    Movimentation[]
 }

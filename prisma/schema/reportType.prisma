@@ -11,5 +11,8 @@ model ReportType {
   Report           Report[]
   reportFieldType  ReportFieldType[]
 
+  activateEventType EventType[] @relation("activateReports")
+  deactivateEventType EventType[] @relation("deactivateReports")
+
   @@unique([name, equipamentTypeId])
 }

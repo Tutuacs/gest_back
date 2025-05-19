@@ -12,5 +12,8 @@ model LicenseType {
   equipamentTypeId  Int
   License           License[]
 
+  activatedEventType   EventType[] @relation("activateLicenses")
+  deactivatedEventType EventType[] @relation("deactivateLicenses")
+
   @@unique([name, equipamentTypeId])
 }

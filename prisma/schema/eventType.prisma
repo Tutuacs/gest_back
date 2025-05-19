@@ -1,0 +1,11 @@
+model EventType {
+  id                       Int                @id @default(autoincrement())
+  name                     String
+  description              String
+  changeEquipamentStatusTo EQUIPAMENT_STATUS?
+  activateLicenses         LicenseType[]      @relation("activateLicenses")
+  deactivateLicenses       LicenseType[]      @relation("deactivateLicenses")
+  activateReports          ReportType[]       @relation("activateReports")
+  deactivateReports        ReportType[]       @relation("deactivateReports")
+  events                   Event[]
+}

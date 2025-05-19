@@ -16,8 +16,9 @@ model User {
   ReportFieldType ReportFieldType[]
   ReportType      ReportType[]
   Updater         Updater?
-  Movimentation   Movimentation[]
+  Event           Event[]
 
+  Location Location[]
 }
 
 model Updater {
@@ -26,5 +27,5 @@ model Updater {
   userId         Int             @unique
   Equipaments    Equipament[]
   Licenses       License[]
-  Movimentations Movimentation[]
+  Event          Event[]
 }
