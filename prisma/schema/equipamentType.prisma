@@ -10,4 +10,5 @@ model EquipamentType {
   licenseType LicenseType[]
   reportType  ReportType[]
   Equipament  Equipament[]
+  EventType   EventType? @relation("equipamentType")
 }
