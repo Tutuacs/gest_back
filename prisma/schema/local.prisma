@@ -3,4 +3,6 @@ model Local {
     role       ROLE
     location   Location @relation(fields: [locationId], references: [id])
     locationId Int
+    user       User     @relation(fields: [userId], references: [id])
+    userId     Int
 }

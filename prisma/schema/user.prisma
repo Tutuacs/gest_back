@@ -19,6 +19,7 @@ model User {
   Event           Event[]
 
   Location Location[]
+  Local Local[]
 }
 
 model Updater {
