@@ -57,6 +57,7 @@ export class equipamentTypeRepository {
                 fieldType: true,
                 licenseType: true,
                 reportType: true,
+                eventType: true,
             }
         });
     }

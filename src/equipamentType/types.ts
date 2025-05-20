@@ -1,6 +1,6 @@
 import { t } from "elysia";
 import { id, createdAt, updatedAt, updatedById } from "../common";
-import { FIELD_TYPES } from "../prisma";
+import { EQUIPAMENT_STATUS, FIELD_TYPES } from "../prisma";
 
 // Base simple types
 const name = t.String({default: ""});
@@ -33,6 +33,14 @@ const licenseType = t.Object({
   equipamentTypeId: id,
 });
 
+const eventType = t.Object({
+  id,
+  name,
+  description: t.Union([description, t.Null()]),
+  equipamentTypeId: t.Number(),
+  changeEquipamentStatusTo: t.Optional(t.Union([t.Enum(EQUIPAMENT_STATUS), t.Null()]))
+})
+
 // ReportType schema
 const reportType = t.Object({
   id,
@@ -61,6 +69,7 @@ export const equipamentType = t.Object({
   fieldType: t.Optional(t.Array(fieldType)),
   licenseType: t.Optional(t.Array(licenseType)),
   reportType: t.Optional(t.Array(reportType)),
+  eventType: t.Optional(t.Array(eventType)),
 });
 
 export type EquipamentType = typeof equipamentType.static;
