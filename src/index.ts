@@ -5,7 +5,6 @@ import { FieldTypeHandler } from "./fieldType";
 import { FieldValueHandler } from "./fieldValue";
 import { licenseTypeHandler } from "./licenseType";
 import { LicenseValueHandler } from "./licenseValue";
-import { MovimentationHandler } from "./movimentation";
 import { ReportHandler } from "./report";
 import { ReportFieldTypeHandler } from "./reportFieldType";
 import { ReportFieldValueHandler } from "./reportFieldValue";
@@ -32,7 +31,6 @@ const app = new Elysia({ name: "Main" })
   .use(FieldValueHandler)
   .use(licenseTypeHandler)
   .use(LicenseValueHandler)
-  // .use(MovimentationHandler)
   .use(LocalHandler)
   .use(LocationHandler)
   .use(EventHandler)
