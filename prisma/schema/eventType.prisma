@@ -3,11 +3,13 @@ model EventType {
     name                     String
     description              String
     equipamentType           EquipamentType     @relation("equipamentType", fields: [equipamentTypeId], references: [id])
-    equipamentTypeId         Int                @unique
+    equipamentTypeId         Int
     changeEquipamentStatusTo EQUIPAMENT_STATUS?
     activateLicenses         LicenseType[]      @relation("activateLicenses")
     deactivateLicenses       LicenseType[]      @relation("deactivateLicenses")
     activateReports          ReportType[]       @relation("activateReports")
     deactivateReports        ReportType[]       @relation("deactivateReports")
     events                   Event[]
+
+    @@unique([name, equipamentTypeId])
 }
