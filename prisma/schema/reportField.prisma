@@ -5,4 +5,6 @@ model ReportField {
   value             String
   report            Report          @relation(fields: [reportId], references: [id])
   reportId          Int
+
+  @@unique([reportFieldTypeId, reportId])
 }
