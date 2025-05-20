@@ -2,8 +2,8 @@ import { t } from "elysia";
 import { id, createdAt, updatedAt, updatedById } from "../common";
 import { report } from "../report/types";
 
-const reportId = report.properties.id;
-const reportFieldTypeId = t.String();
+const reportId = t.Number();
+const reportFieldTypeId = t.Number();
 const value = t.String();
 
 export const reportFieldValue = t.Object({
@@ -15,3 +15,13 @@ export const reportFieldValue = t.Object({
     updatedAt,
     updatedById,
 });
+
+export const createReportFieldValue = t.Object({
+    reportId: reportId,
+    reportFieldTypeId: reportFieldTypeId,
+    value: value,
+    updatedById,
+})
+
+export type ReportFieldValue = typeof reportFieldValue.static;
+export type CreateReportFieldValue = typeof createReportFieldValue.static;

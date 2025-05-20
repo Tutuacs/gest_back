@@ -1,12 +1,12 @@
 import Elysia from "elysia";
-import { validationSchema } from "./validation/create";
+import { validationSchema } from "./validation/save";
 import { authenticator } from "../../jwt";
-import { fieldRepository } from "../repository";
+import { reportFieldRepository } from "../repository";
 
 export const save = new Elysia({ name: "SaveField" })
     .use(authenticator)
-    .decorate("fieldRepository", new fieldRepository())
-    .post("/", async ({ body, getInfo, fieldRepository, set }) => {
+    .decorate("reportFieldRepository", new reportFieldRepository())
+    .post("/", async ({ body, getInfo, reportFieldRepository, set }) => {
 
         const token = await getInfo();
 
@@ -24,18 +24,18 @@ export const save = new Elysia({ name: "SaveField" })
             };
         }
 
-        const existCombination = await fieldRepository.existField(body.fieldTypeId, body.equipamentId);
+        const existCombination = await reportFieldRepository.existField(body.reportFieldTypeId, body.reportId);
         
         body.updatedById = token?.user.id;
         if (existCombination == null) {
-            const field = await fieldRepository.create(body);
+            const field = await reportFieldRepository.create(body);
             
             return {
                 message: `field created, id: ${field.id}`,
             };
         }
         
-        const newFieldType = await fieldRepository.update(existCombination, body);
+        const newFieldType = await reportFieldRepository.update(existCombination, body);
 
         return {
                 message: `field updated, id: ${newFieldType.id}`,

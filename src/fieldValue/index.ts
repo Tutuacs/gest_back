@@ -1,5 +1,5 @@
 import Elysia from "elysia";
-import { save } from "./controllers/create";
+import { save } from "./controllers/save";
 
 export const FieldValueHandler = new Elysia({name: "FieldValueHandler", prefix: "/field-value", tags: ["Field Value"]})
     .use(save)
