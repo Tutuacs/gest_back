@@ -17,6 +17,144 @@ export class eventTypeRepository {
         });
     }
 
+    async licenseRelation(id: number, equipamentTypeId: number) {
+        return this.prisma.licenseType.findFirst({
+            where: {
+                id: id,
+                equipamentTypeId: equipamentTypeId,
+            },
+        })
+    }
+
+    async reportRelation(id: number, equipamentTypeId: number) {
+        return this.prisma.reportType.findFirst({
+            where: {
+                id: id,
+                equipamentTypeId: equipamentTypeId,
+            },
+        })
+    }
+
+    async connectActiveLicense(id: number, eventTypeId: number) {
+        return await this.prisma.eventType.update({
+            where: {
+                id: eventTypeId,
+            },
+            data: {
+                activateLicenses: {
+                    connect: {
+                        id: id,
+                    }
+                }
+            }
+        });
+    }
+
+    async connectDeactivateLicense(id: number, eventTypeId: number) {
+        return await this.prisma.eventType.update({
+            where: {
+                id: eventTypeId,
+            },
+            data: {
+                deactivateLicenses: {
+                    connect: {
+                        id: id,
+                    }
+                }
+            }
+        });
+    }
+
+    async connectActiveReport(id: number, eventTypeId: number) {
+        return await this.prisma.eventType.update({
+            where: {
+                id: eventTypeId,
+            },
+            data: {
+                activateReports: {
+                    connect: {
+                        id: id,
+                    }
+                }
+            }
+        });
+    }
+
+    async connectDeactivateReport(id: number, eventTypeId: number) {
+        return await this.prisma.eventType.update({
+            where: {
+                id: eventTypeId,
+            },
+            data: {
+                deactivateReports: {
+                    connect: {
+                        id: id,
+                    }
+                }
+            }
+        });
+    }
+
+    async disconnectActiveLicense(id: number, eventTypeId: number) {
+        return await this.prisma.eventType.update({
+            where: {
+                id: eventTypeId,
+            },
+            data: {
+                activateLicenses: {
+                    disconnect: {
+                        id: id,
+                    }
+                }
+            }
+        });
+    }
+
+    async disconnectDeactivateLicense(id: number, eventTypeId: number) {
+        return await this.prisma.eventType.update({
+            where: {
+                id: eventTypeId,
+            },
+            data: {
+                deactivateLicenses: {
+                    disconnect: {
+                        id: id,
+                    }
+                }
+            }
+        });
+    }
+
+    async disconnectActiveReport(id: number, eventTypeId: number) {
+        return await this.prisma.eventType.update({
+            where: {
+                id: eventTypeId,
+            },
+            data: {
+                activateReports: {
+                    disconnect: {
+                        id: id,
+                    }
+                }
+            }
+        });
+    }
+
+    async disconnectDeactivateReport(id: number, eventTypeId: number) {
+        return await this.prisma.eventType.update({
+            where: {
+                id: eventTypeId,
+            },
+            data: {
+                deactivateReports: {
+                    disconnect: {
+                        id: id,
+                    }
+                }
+            }
+        });
+    }
+
     async existCombination(name: string, equipamentTypeId: number) {
         return 0 < await this.prisma.eventType.count({
             where: {
